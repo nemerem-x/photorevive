@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import original from '../public/badImage.png'
@@ -25,7 +26,7 @@ export default function Home() {
             life with the help of AI. Keep those cherished 
             memories alive for free. Start restoring your photos now.
           </p>
-          <button>Restore photo</button>
+          <Link href='/revive'><button>Restore photo</button></Link>
         </div>
         <div className={styles.imagesection}>
           <div>

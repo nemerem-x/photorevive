@@ -19,12 +19,21 @@
   padding: .5em 1em;
 }
 
+.footer {
+  padding: 2em;
+}
+
+.footer p {
+  color: gray;
+  font-size: .8rem;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0rem;
+  /* padding: 1rem 0rem; */
   margin: auto;
   min-height: 100vh;
   text-align: center;
@@ -48,84 +57,43 @@
 }
 
 .imagesection {
-  padding-top: 3em;
+  padding: 3em;
   display: flex;
   gap: 3em;
 }
 
+.revivepage {
+  text-align: center;
+  padding: 5em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.revivepage h1 {
+  font-size: 3.5rem;
+}
+
 /* responsive */
 @media (max-width: 1000px) {
-  .content {
-    padding: 4rem;
+  .imagesection img {
+    max-width: 350px;
+    max-height: 350px;
+    /* width: 100%; */
+  }
+}
+
+@media (max-width: 700px) {
+  .imagesection {
+    flex-direction: column;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
+  .info {
+    width: 95%;
   }
 
-  .card {
-    padding: 1rem 2.5rem;
+  .info h1 {
+    font-size: 3rem;
   }
 
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-  }
-
-  .description p {
-    align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
-  }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
-  }
 }
