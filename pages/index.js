@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-
+import original from '../public/badImage.png'
+import revived from '../public/goodImage.png'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -25,6 +26,16 @@ export default function Home() {
             memories alive for free. Start restoring your photos now.
           </p>
           <button>Restore photo</button>
+        </div>
+        <div className={styles.imagesection}>
+          <div>
+            <p>Original Photo</p>
+            <Image src={original} width='400' height='400' alt='original image' />
+          </div>
+          <div>
+            <p>Revived Photo</p>
+            <Image src={revived} width='400' height='400' alt='original image' />
+          </div>
         </div>
       </main>
     </>
