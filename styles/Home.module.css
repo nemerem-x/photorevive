@@ -94,6 +94,23 @@
   color: gray;
 }
 
+.revampedsection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonsection {
+  display: flex;
+  gap: 1em;
+}
+
+.buttonsection button:first-child{
+  background: none;
+  border: 2px solid white;
+  color: white;
+}
+
 /* responsive */
 @media (max-width: 1000px) {
   .imagesection img {
