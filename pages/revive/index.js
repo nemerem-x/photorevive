@@ -1,8 +1,11 @@
 import styles from '@/styles/Home.module.css'
-import {useCallback} from 'react'
+import {useCallback, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default function index() {
+
+    const [file, setFile] = useState({})
 
     const onDrop = useCallback(acceptedFiles => {
         console.log(acceptedFiles[0])
