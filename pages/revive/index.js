@@ -12,6 +12,9 @@ export default function index() {
     const [file, setFile] = useState({})
     const [percent, setPercent] = useState(0)
     const [complete, setComplete] = useState(false)
+    const [dropped, setDropped] = useState(false)
+    const [originalImageUrl, setOriginalImageUrl] = useState('')
+    const [revampedImageUrl, setRevampedImageUrl] = useState('')
 
     const handleUpload = () => {
         if(file.name) {
@@ -29,7 +32,8 @@ export default function index() {
                 (err) => console.log(err),
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                        console.log(url);
+                        setOriginalImageUrl(url)
+                        setComplete(true)
                     });
                 }
             );
@@ -42,6 +46,7 @@ export default function index() {
 
     const onDrop = useCallback(acceptedFiles => {
         setFile(acceptedFiles[0])
+        setDropped(true)
     }, [])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
@@ -54,32 +59,41 @@ export default function index() {
                 !complete ?
                 <div className={styles.dropzone} {...getRootProps()}>
                     <input {...getInputProps()} />
-                    {
+           
+                    { !dropped ?
                         isDragActive ?
                             <p>Drop the files here ...</p> :
                             <p>Drag 'n' drop some files here, or click to select files</p>
+                        :
+                        <p>{percent}%</p>
                     }
+
                 </div>
                 :
                 <div className={styles.revampedsection}>
                     <div className={styles.imagesection}>
-                        <div>
-                            <p>Original Image</p>
-                            <Image src={original} width='400' height='400' alt='original image' />
-                        </div>
-                        <div>
-                            <p>Revamped Image</p>
-                            <Image src={revived} width='400' height='400' alt='original image' />
-                        </div>
+                        {   
+                            originalImageUrl &&
+                            <div>
+                                <p>Original Image</p>
+                                <Image src={originalImageUrl} width='400' height='400' alt='original image' />
+                            </div>
+                        }
+                        {
+                            revampedImageUrl &&
+                            <div>
+                                <p>Revamped Image</p>
+                                <Image src={revived} width='400' height='400' alt='original image' />
+                            </div>
+                        }
                     </div>
                     <div className={styles.buttonsection}>
-                        <button>Upload new image</button>
+                        <button onClick={setComplete(false)}>Upload new image</button>
                         <button>Download revamped image</button>
                     </div>
                 </div>
             }
 
-            <h3>{percent}</h3>
         </div>
     )
 }

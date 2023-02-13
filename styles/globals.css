@@ -19,7 +19,7 @@ body {
 
 body {
   color: var(--secondary-color);
-  background: var(--background-color);
+  background-color: var(--background-color);
   font-family: 'Inter', sans-serif;
 }
 
@@ -37,6 +37,7 @@ button {
   border: none;
   border-radius: .5em;
   cursor: pointer;
+  outline: none;
 }
 
 button:hover {
