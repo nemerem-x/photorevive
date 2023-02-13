@@ -3,7 +3,7 @@ import original from '../../public/badImage.png'
 import revived from '../../public/goodImage.png'
 import { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from '../../components/firebase';
 import Image from 'next/image';
 
@@ -25,7 +25,7 @@ export default function index() {
                 "state_changed",
                 (snapshot) => {
                     const percent = Math.round(
-                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 98
                     );
                         setPercent(percent);
                 },
@@ -43,6 +43,11 @@ export default function index() {
     useEffect(()=>{
         handleUpload()
     },[file])
+
+    const newUpload = () => {
+        setComplete(false)
+        setDropped(false)
+    }
 
     const onDrop = useCallback(acceptedFiles => {
         setFile(acceptedFiles[0])
@@ -63,7 +68,10 @@ export default function index() {
                     { !dropped ?
                         isDragActive ?
                             <p>Drop the files here ...</p> :
-                            <p>Drag 'n' drop some files here, or click to select files</p>
+                            <div className={styles.innerdropzone}>
+                                <button>Upload photo</button>
+                                <p> ...or Drag 'n' drop an image</p>
+                            </div>
                         :
                         <p>{percent}%</p>
                     }
@@ -88,7 +96,7 @@ export default function index() {
                         }
                     </div>
                     <div className={styles.buttonsection}>
-                        <button onClick={setComplete(false)}>Upload new image</button>
+                        <button onClick={newUpload}>Upload new image</button>
                         <button>Download revamped image</button>
                     </div>
                 </div>

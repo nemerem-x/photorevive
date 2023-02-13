@@ -98,11 +98,17 @@
   color: gray;
 }
 
+.innerdropzone {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .revampedsection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* outline: none; */
+  outline: none;
 }
 
 .buttonsection {
@@ -136,6 +142,10 @@
 
   .info h1 {
     font-size: 3rem;
+  }
+
+  .dropzone {
+    width: 82%;
   }
 
 }
