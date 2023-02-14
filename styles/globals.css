@@ -38,6 +38,7 @@ button {
   border-radius: .5em;
   cursor: pointer;
   outline: none;
+  /* box-shadow: 0px 0px 20px 1px var(--primary-color); */
 }
 
 button:hover {

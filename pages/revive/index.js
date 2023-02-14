@@ -33,6 +33,7 @@ export default function index() {
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((url) => {
                         setOriginalImageUrl(url)
+                        console.log(url)
                         setComplete(true)
                     });
                 }
