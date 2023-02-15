@@ -61,6 +61,7 @@ export default function index() {
         })
 
         const data = await res.json()
+        setRevampedImageUrl(data)
         console.log(data)
     }
 
@@ -106,7 +107,10 @@ export default function index() {
                             revampedImageUrl &&
                             <div>
                                 <p>Revamped Image</p>
-                                <Image src={revived} width='400' height='400' alt='original image' />
+                                {
+                                    revampedImageUrl == "failed" ? <p>failed</p> :
+                                    <Image src={revampedImageUrl} width='400' height='400' alt='original image' />
+                                }
                             </div>
                         }
                     </div>
