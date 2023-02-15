@@ -6,6 +6,7 @@ import { useDropzone } from 'react-dropzone'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from '../../components/firebase';
 import Image from 'next/image';
+import { async } from '@firebase/util'
 
 export default function index() {
 
@@ -15,6 +16,11 @@ export default function index() {
     const [dropped, setDropped] = useState(false)
     const [originalImageUrl, setOriginalImageUrl] = useState('')
     const [revampedImageUrl, setRevampedImageUrl] = useState('')
+
+    const newUpload = () => {
+        setComplete(false)
+        setDropped(false)
+    }
 
     const handleUpload = () => {
         if(file.name) {
@@ -33,7 +39,7 @@ export default function index() {
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((url) => {
                         setOriginalImageUrl(url)
-                        console.log(url)
+                        getRevivedImage(url)
                         setComplete(true)
                     });
                 }
@@ -45,9 +51,17 @@ export default function index() {
         handleUpload()
     },[file])
 
-    const newUpload = () => {
-        setComplete(false)
-        setDropped(false)
+    const getRevivedImage = async (url) => {
+        const res = await fetch("/api/revive", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({imageUrl: url})
+        })
+
+        const data = await res.json()
+        console.log(data)
     }
 
     const onDrop = useCallback(acceptedFiles => {

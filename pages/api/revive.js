@@ -1,8 +1,7 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 export default async function handler(req, res) {
 
-    // if(req.method === "POST"){
+    const imageUrl = req.body.imageUrl
 
     const revived = await fetch("https://api.replicate.com/v1/predictions", {
         method: "POST",
@@ -13,13 +12,16 @@ export default async function handler(req, res) {
         body: JSON.stringify({
             version: "660d922d33153019e8c263a3bba265de882e7f4f70396546b6c9c8f9d47a021a",
             input: {
-                image: "..."
+                image: imageUrl,
+                task_type: "Real-World Image Super-Resolution-Large",
+                noise: 15,
+                jpeg: 40,
             }
         })
     })
 
+
     const data = await revived.json()
-    console.log(data)
     const url = data.urls.get
 
     let revivedImage = null
@@ -34,6 +36,7 @@ export default async function handler(req, res) {
         });
 
         const response = await finalUrl.json()
+        console.log(response)
 
         if (response.status === "succeeded") {
             revivedImage = response.output
