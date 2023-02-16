@@ -8,7 +8,7 @@ import { saveAs } from 'file-saver'
 
 export default function Revive() {
 
-    const [file, setFile] = useState({})
+    const [file, setFile] = useState(null)
     const [percent, setPercent] = useState(0)
     const [complete, setComplete] = useState(false)
     const [dropped, setDropped] = useState(false)
@@ -21,7 +21,7 @@ export default function Revive() {
     }
 
     const handleUpload = () => {
-        if(file.name) {
+        if(file?.name) {
 
             const storageRef = ref(storage, `images/${file?.name}`)
             const uploadTask = uploadBytesResumable(storageRef, file)
@@ -86,7 +86,7 @@ export default function Revive() {
                             <p>Drop the files here ...</p> :
                             <div className={styles.innerdropzone}>
                                 <button>Upload photo</button>
-                                <p> ...or Drag 'n' drop an image</p>
+                                <p> ...or Drag and drop an image</p>
                             </div>
                         :
                         <>
