@@ -49,7 +49,7 @@
   flex-direction: column;
   width: 80%;
   gap: 2em;
-  padding-top: 5em;
+  padding: 5em 0 3em 0;
 }
 
 .info h1 {
@@ -61,7 +61,7 @@
 }
 
 .imagesection {
-  padding: 3em;
+  padding-bottom: 3em;
   display: flex;
   gap: 3em;
 }
@@ -128,12 +128,6 @@
   flex-direction: column;
   align-items: center;
   outline: none;
-}
-
-.percent {
-  font-size: 1rem;
-  /* color: white !important;
-  font-weight: 600; */
 }
 
 .buttonsection {

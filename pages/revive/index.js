@@ -62,7 +62,6 @@ export default function index() {
 
         const data = await res.json()
         setRevampedImageUrl(data)
-        console.log(data)
     }
 
     const downloadImage = () => {
@@ -121,9 +120,12 @@ export default function index() {
                                 }
                             </div>
                             :
-                            <video autoPlay loop>
-                                <source src="/load2.mp4" type="video/mp4"/>
-                            </video>
+                            <>
+                                {/* <p>please wait...</p> */}
+                                <video autoPlay loop>
+                                    <source src="/load2.mp4" type="video/mp4"/>
+                                </video>
+                            </>
                         }
                     </div>
                     <div className={styles.buttonsection}>
