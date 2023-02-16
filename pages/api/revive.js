@@ -1,5 +1,27 @@
 
+import { Ratelimit } from "@upstash/ratelimit"
+import { Redis } from "@upstash/redis"
+import requestIp from "request-ip"
+
+    const redis = new Redis({
+        url: process.env.UPSTASH_REDIS_REST_URL,
+        token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    })
+
+    const ratelimit = new Ratelimit({
+        redis: redis,
+        limiter: Ratelimit.slidingWindow(3, "60 s"),
+    });
+
 export default async function handler(req, res) {
+
+    const identifier = requestIp.getClientIp(req)
+    const { success } = await ratelimit.limit(identifier)
+
+    if (!success) {
+        res.status(429).json("Unable to process at this time")
+        return
+    }
 
     const imageUrl = req.body.imageUrl
 
@@ -19,7 +41,6 @@ export default async function handler(req, res) {
         })
     })
 
-
     const data = await revived.json()
     const url = data.urls.get
 
@@ -35,7 +56,6 @@ export default async function handler(req, res) {
         });
 
         const response = await finalUrl.json()
-        console.log(response)
 
         if (response.status === "succeeded") {
             revivedImage = response.output
@@ -45,7 +65,6 @@ export default async function handler(req, res) {
             await new Promise((resolve) => setTimeout(resolve, 1000));
         }
     }
-
 
     res.status(200).json(revivedImage ? revivedImage : "Failed")
 

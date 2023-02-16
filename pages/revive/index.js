@@ -61,7 +61,6 @@ export default function index() {
 
         const data = await res.json()
         setRevampedImageUrl(data)
-        console.log(data)
     }
 
     const onDrop = useCallback(acceptedFiles => {
