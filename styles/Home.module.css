@@ -68,6 +68,13 @@
 
 .imagesection img {
   border-radius: 10px;
+  color: red;
+  font-size: .5rem;
+}
+
+.imagesection video {
+  border-radius: 10px;
+  mix-blend-mode: lighten;
 }
 
 .revivepage {
@@ -98,6 +105,14 @@
   cursor: pointer;
 }
 
+.dropzone video {
+  border-radius: 10px;
+  mix-blend-mode: lighten;
+  height: 300px;
+  width: 300px;
+  position: absolute;
+}
+
 .dropzone p {
   color: gray;
 }
@@ -113,6 +128,12 @@
   flex-direction: column;
   align-items: center;
   outline: none;
+}
+
+.percent {
+  font-size: 1rem;
+  /* color: white !important;
+  font-weight: 600; */
 }
 
 .buttonsection {

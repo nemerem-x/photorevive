@@ -6,6 +6,7 @@ import { useDropzone } from 'react-dropzone'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from '../../components/firebase';
 import Image from 'next/image';
+import { saveAs } from 'file-saver'
 
 export default function index() {
 
@@ -61,7 +62,12 @@ export default function index() {
 
         const data = await res.json()
         setRevampedImageUrl(data)
+        console.log(data)
     }
+
+    const downloadImage = () => {
+        saveAs(revampedImageUrl, `${file.name} revived`)
+      }
 
     const onDrop = useCallback(acceptedFiles => {
         setFile(acceptedFiles[0])
@@ -73,7 +79,6 @@ export default function index() {
         <div className={styles.revivepage}>
             <h1>Revive any face photo.</h1>
             <p>Upload and let AI revive your photo.</p>
-
             {
                 !complete ?
                 <div className={styles.dropzone} {...getRootProps()}>
@@ -87,7 +92,12 @@ export default function index() {
                                 <p> ...or Drag 'n' drop an image</p>
                             </div>
                         :
-                        <p>{percent}%</p>
+                        <>
+                        <p className={styles.percent}>{percent}%</p>
+                        <video autoPlay loop>
+                            <source src="/load2.mp4" type="video/mp4"/>
+                        </video>
+                        </>
                     }
 
                 </div>
@@ -102,21 +112,25 @@ export default function index() {
                             </div>
                         }
                         {
-                            revampedImageUrl &&
+                            revampedImageUrl ?
                             <div>
                                 <p>Revamped Image</p>
                                 {
                                     revampedImageUrl == "failed" ? <p>failed</p> :
-                                    <Image src={revampedImageUrl} width='400' height='400' alt='original image' />
+                                    <Image src={revampedImageUrl} width='400' height='400' alt='could not load revamped image' />
                                 }
                             </div>
+                            :
+                            <video autoPlay loop>
+                                <source src="/load2.mp4" type="video/mp4"/>
+                            </video>
                         }
                     </div>
                     <div className={styles.buttonsection}>
                         {   revampedImageUrl &&
                             <>
                                 <button onClick={newUpload}>Upload new image</button>
-                                <button>Download revamped image</button>
+                                <button onClick={downloadImage}>Download revamped image</button>
                             </>
                         }
                     </div>
