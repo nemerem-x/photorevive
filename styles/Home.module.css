@@ -66,6 +66,10 @@
   gap: 3em;
 }
 
+.imagesection img {
+  border-radius: 10px;
+}
+
 .revivepage {
   text-align: center;
   padding: 5em 0;

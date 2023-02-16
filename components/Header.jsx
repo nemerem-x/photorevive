@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className={styles.header}>
         <Link href='/'><h1>PhotoRevive</h1></Link>
-        <p>Swin Transformer</p>
+        <p>GFP-GAN</p>
     </div>
   )
 }

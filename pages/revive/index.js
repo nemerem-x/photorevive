@@ -6,7 +6,6 @@ import { useDropzone } from 'react-dropzone'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from '../../components/firebase';
 import Image from 'next/image';
-import { async } from '@firebase/util'
 
 export default function index() {
 
@@ -115,8 +114,12 @@ export default function index() {
                         }
                     </div>
                     <div className={styles.buttonsection}>
-                        <button onClick={newUpload}>Upload new image</button>
-                        <button>Download revamped image</button>
+                        {   revampedImageUrl &&
+                            <>
+                                <button onClick={newUpload}>Upload new image</button>
+                                <button>Download revamped image</button>
+                            </>
+                        }
                     </div>
                 </div>
             }
