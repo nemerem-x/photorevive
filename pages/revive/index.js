@@ -1,6 +1,4 @@
 import styles from '@/styles/Home.module.css'
-import original from '../../public/badImage.png'
-import revived from '../../public/goodImage.png'
 import { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
@@ -8,7 +6,7 @@ import { storage } from '../../components/firebase';
 import Image from 'next/image';
 import { saveAs } from 'file-saver'
 
-export default function index() {
+export default function Revive() {
 
     const [file, setFile] = useState({})
     const [percent, setPercent] = useState(0)

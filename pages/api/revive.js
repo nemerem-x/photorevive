@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const { success } = await ratelimit.limit(identifier)
 
     if (!success) {
-        res.status(429).json("Unable to process at this time")
+        res.status(429).json("Unable to process at this time, wait for 1 minute")
         return
     }
 
