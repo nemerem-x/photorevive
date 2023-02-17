@@ -12,6 +12,7 @@ export default function Revive() {
     const [file, setFile] = useState(null)
     const [percent, setPercent] = useState(0)
     const [complete, setComplete] = useState(false)
+    const [getRevampedcomplete, setGetRevampedcomplete] = useState(false)
     const [dropped, setDropped] = useState(false)
     const [originalImageUrl, setOriginalImageUrl] = useState('')
     const [revampedImageUrl, setRevampedImageUrl] = useState('')
@@ -63,6 +64,7 @@ export default function Revive() {
     
             const data = await res.json()
             setRevampedImageUrl(data)
+            setGetRevampedcomplete(true)
             
         } catch (error) {
             console.log(error)
@@ -115,7 +117,7 @@ export default function Revive() {
                             </div>
                         }
                         {
-                            revampedImageUrl ?
+                            revampedImageUrl &&
                             <div>
                                 <p>Revamped photo</p>
                                 {
@@ -123,10 +125,8 @@ export default function Revive() {
                                     <Image src={revampedImageUrl} width='400' height='400' alt='could not load revamped photo' />
                                 }
                             </div>
-                            :
-                            <>
-                                <Image className={styles.loading2} src={loading} width='400' height='400' alt='loading...' />
-                            </>
+                            
+                            
                         }
                     </div>
                     <div className={styles.buttonsection}>
@@ -134,6 +134,12 @@ export default function Revive() {
                             <>
                                 <button onClick={newUpload}>Upload new photo</button>
                                 <button onClick={downloadImage}>Download revamped photo</button>
+                            </>
+                        }
+                        {
+                            originalImageUrl && !getRevampedcomplete &&
+                            <>
+                                <Image className={styles.loading2} src={loading} width='400' height='400' alt='loading...' />
                             </>
                         }
                     </div>
