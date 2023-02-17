@@ -93,15 +93,12 @@ export default function Revive() {
                             <p>Drop the files here ...</p> :
                             <div className={styles.innerdropzone}>
                                 <button>Upload photo</button>
-                                <p> ...or Drag and drop an image</p>
+                                <p> ...or Drag and drop an photo</p>
                             </div>
                         :
                         <>
                         <p className={styles.percent}>{percent}%</p>
                         <Image className={styles.loading} src={loading} width='400' height='400' alt='loading...' />
-                        {/* <video autoPlay loop>
-                            <source src="/load3.gif" type="video/mp4"/>
-                        </video> */}
                         </>
                     }
 
@@ -112,35 +109,30 @@ export default function Revive() {
                         {   
                             originalImageUrl &&
                             <div>
-                                <p>Original Image</p>
-                                <Image src={originalImageUrl} width='400' height='400' alt='original image' />
+                                <p>Original photo</p>
+                                <Image src={originalImageUrl} width='400' height='400' alt='original photo' />
                             </div>
                         }
                         {
                             revampedImageUrl ?
                             <div>
-                                <p>Revamped Image</p>
+                                <p>Revamped photo</p>
                                 {
                                     revampedImageUrl == "failed" ? <p>failed</p> :
-                                    <Image src={revampedImageUrl} width='400' height='400' alt='could not load revamped image' />
+                                    <Image src={revampedImageUrl} width='400' height='400' alt='could not load revamped photo' />
                                 }
                             </div>
                             :
                             <>
-                                {/* <p>please wait...</p> */}
-                                {/* <video autoPlay loop>
-                                    <source src="/load2.mp4" type="video/mp4"/>
-                                </video> */}
                                 <Image className={styles.loading2} src={loading} width='400' height='400' alt='loading...' />
-
                             </>
                         }
                     </div>
                     <div className={styles.buttonsection}>
                         {   revampedImageUrl &&
                             <>
-                                <button onClick={newUpload}>Upload new image</button>
-                                <button onClick={downloadImage}>Download revamped image</button>
+                                <button onClick={newUpload}>Upload new photo</button>
+                                <button onClick={downloadImage}>Download revamped photo</button>
                             </>
                         }
                     </div>
