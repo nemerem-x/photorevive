@@ -2,7 +2,7 @@ import styles from '@/styles/Home.module.css'
 import { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage } from '../../components/firebase';
+import { storage } from '../../src/firebase';
 import Image from 'next/image';
 import loading from '/public/load3.gif'
 import { saveAs } from 'file-saver'

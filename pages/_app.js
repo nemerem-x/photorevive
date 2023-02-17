@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Head from 'next/head'
+import Layout from '@/components/Layout'
 
 export default function App({ Component, pageProps }) {
   return (
@@ -12,9 +13,11 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header/>
-      <Component {...pageProps} />
-      <Footer/>
+      {/* <Header/> */}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+      {/* <Footer/> */}
     </>
   )
 }
