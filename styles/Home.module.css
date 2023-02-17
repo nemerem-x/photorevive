@@ -64,6 +64,14 @@
   font-size: 4.5rem;
 }
 
+.info p:nth-child(1) {
+  font-size: .8rem;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: .4em .7em;
+}
+
 .info p {
   max-width: 40em;
 }
@@ -97,6 +105,14 @@
 
 .revivepage h1 {
   font-size: 3.5rem;
+}
+
+.revivepage p:nth-child(1) {
+  font-size: .8rem;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: .4em .7em;
 }
 
 .dropzone {
@@ -180,4 +196,11 @@
     flex-direction: column;
   }
 
+  .info p:nth-child(1) {
+    width: 70%;
+  }
+
+  .revivepage p:nth-child(1) {
+    width: 70%;
+  }
 }

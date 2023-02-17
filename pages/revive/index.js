@@ -81,6 +81,7 @@ export default function Revive() {
 
     return (
         <div className={styles.revivepage}>
+            <p>Face restoration algorithm for old photos or AI-generated faces</p>
             <h1>Revive any face photo.</h1>
             <p>Upload and let AI revive your photo.</p>
             {
