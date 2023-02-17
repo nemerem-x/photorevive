@@ -4,6 +4,7 @@ import { useDropzone } from 'react-dropzone'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from '../../components/firebase';
 import Image from 'next/image';
+import loading from '/public/load3.gif'
 import { saveAs } from 'file-saver'
 
 export default function Revive() {
@@ -91,9 +92,10 @@ export default function Revive() {
                         :
                         <>
                         <p className={styles.percent}>{percent}%</p>
-                        <video autoPlay loop>
-                            <source src="/load2.mp4" type="video/mp4"/>
-                        </video>
+                        <Image className={styles.loading} src={loading} width='400' height='400' alt='loading...' />
+                        {/* <video autoPlay loop>
+                            <source src="/load3.gif" type="video/mp4"/>
+                        </video> */}
                         </>
                     }
 
@@ -120,9 +122,11 @@ export default function Revive() {
                             :
                             <>
                                 {/* <p>please wait...</p> */}
-                                <video autoPlay loop>
+                                {/* <video autoPlay loop>
                                     <source src="/load2.mp4" type="video/mp4"/>
-                                </video>
+                                </video> */}
+                                <Image className={styles.loading2} src={loading} width='400' height='400' alt='loading...' />
+
                             </>
                         }
                     </div>
