@@ -51,21 +51,27 @@ export default function Revive() {
     },[file])
 
     const getRevivedImage = async (url) => {
-        const res = await fetch("/api/revive", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({imageUrl: url})
-        })
-
-        const data = await res.json()
-        setRevampedImageUrl(data)
+        await new Promise((resolve) => setTimeout(resolve, 500))
+        try {
+            const res = await fetch("/api/revive", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({imageUrl: url})
+            })
+    
+            const data = await res.json()
+            setRevampedImageUrl(data)
+            
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const downloadImage = () => {
         saveAs(revampedImageUrl, `${file.name} revived`)
-      }
+    }
 
     const onDrop = useCallback(acceptedFiles => {
         setFile(acceptedFiles[0])
