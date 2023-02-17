@@ -168,4 +168,8 @@
     width: 82%;
   }
 
+  .buttonsection {
+    flex-direction: column;
+  }
+
 }
