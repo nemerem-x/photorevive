@@ -5,6 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage } from '../../src/firebase';
 import Image from 'next/image';
 import loading from '/public/load3.gif'
+import loading2 from '/public/load4.gif'
 import { saveAs } from 'file-saver'
 
 export default function Revive() {
@@ -139,7 +140,7 @@ export default function Revive() {
                         {
                             originalImageUrl && !getRevampedcomplete &&
                             <>
-                                <Image className={styles.loading2} src={loading} width='400' height='400' alt='loading...' />
+                                <Image className={styles.loading2} src={loading2} width='80' height='80' alt='loading...' />
                             </>
                         }
                     </div>
