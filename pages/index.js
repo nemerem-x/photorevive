@@ -16,7 +16,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.info}>
           <p>Face restoration algorithm for old photos or AI-generated faces</p>
-          <h1>Making old photos new again through AI</h1>
+          <h1>Making old photos new again with AI</h1>
           <p>Bring your faded and unclear face photos back to 
             life with the help of AI. Keep those cherished 
             memories alive for free. Start restoring your photos now.

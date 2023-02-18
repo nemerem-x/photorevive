@@ -11,10 +11,9 @@
   justify-content: space-between;
   position: sticky;
   top: 0;
-  /* background-color: var(--background-color); */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  /* opacity: .95; */
+  z-index: 2;
 }
 
 .header p {
