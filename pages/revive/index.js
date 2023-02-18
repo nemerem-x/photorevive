@@ -136,7 +136,7 @@ export default function Revive() {
                         {
                             revampedImageUrl &&
                             <div>
-                                <p>Revamped photo</p>
+                                <p>Revived photo</p>
                                 {
                                     revampedImageUrl == "failed" ? <p>failed</p> :
                                     <Image src={revampedImageUrl} width='400' height='400' alt='could not load revamped photo' />
@@ -148,10 +148,10 @@ export default function Revive() {
                     </div>
                     <div className={styles.buttonsection}>
                         {   
-                            revampedImageUrl &&
+                            revampedImageUrl && !errorMessage &&
                             <>
                                 <button onClick={newUpload}>Upload new photo</button>
-                                <button onClick={downloadImage}>Download revamped photo</button>
+                                <button onClick={downloadImage}>Download revived photo</button>
                             </>
                         }
                         {
