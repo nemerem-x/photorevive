@@ -202,4 +202,8 @@
   .revivepage p:nth-child(1) {
     width: 70%;
   }
+
+  .revivepage h1 {
+    font-size: 2.5rem;
+  }
 }
