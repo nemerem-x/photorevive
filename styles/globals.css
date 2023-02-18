@@ -19,12 +19,13 @@ body {
 body {
   color: var(--secondary-color);
   /* background-color: var(--background-color); */
-  background: linear-gradient(146.15deg, rgba(204, 255, 0, 0.2) -1.17%, rgba(0, 0, 0, 0) 26.83%), #12130C;
+  background: url(/purple_white.png), #12130C;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   font-family: 'Inter', sans-serif;
   max-width: 1100px;
-  /* display: flex;
-  flex-direction: column;
-  min-height: 100vh; */
+  height: 100%;
 }
 
 a {
