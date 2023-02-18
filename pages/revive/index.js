@@ -85,8 +85,8 @@ export default function Revive() {
 
     return (
         <motion.div
-        initial={{ opacity: 0, y: -15 }}
-        animate={{ opacity: 1, y: 15 }}
+        initial={{ opacity: 0, y: -20}}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         >
         <div className={styles.revivepage}>
@@ -98,7 +98,7 @@ export default function Revive() {
                 <div className={styles.dropzone} {...getRootProps()}>
                     <input {...getInputProps()} />
            
-                    { !dropped ?
+                    { dropped ?
                         isDragActive ?
                             <p>Drop the files here ...</p> :
                             <div className={styles.innerdropzone}>
