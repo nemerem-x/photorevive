@@ -184,6 +184,11 @@
 }
 
 @media (max-width: 700px) {
+  .header img {
+    width: 150px;
+    height: auto;
+  }
+
   .imagesection {
     flex-direction: column;
   }
