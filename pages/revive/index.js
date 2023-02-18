@@ -14,6 +14,7 @@ export default function Revive() {
     const [file, setFile] = useState(null)
     const [percent, setPercent] = useState(0)
     const [complete, setComplete] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
     const [getRevampedcomplete, setGetRevampedcomplete] = useState(false)
     const [dropped, setDropped] = useState(false)
     const [originalImageUrl, setOriginalImageUrl] = useState('')
@@ -22,6 +23,9 @@ export default function Revive() {
     const newUpload = () => {
         setComplete(false)
         setDropped(false)
+        setRevampedImageUrl('')
+        setOriginalImageUrl('')
+        setGetRevampedcomplete(false)
     }
 
     const handleUpload = () => {
@@ -65,8 +69,14 @@ export default function Revive() {
             })
     
             const data = await res.json()
-            setRevampedImageUrl(data)
-            setGetRevampedcomplete(true)
+
+            if(data.status === "success"){
+                setRevampedImageUrl(data.url)
+                setGetRevampedcomplete(true)
+            } else if (data.status === "failed"){
+                setErrorMessage(data.message)
+                setGetRevampedcomplete(true)
+            }
             
         } catch (error) {
             console.log(error)
@@ -98,7 +108,7 @@ export default function Revive() {
                 <div className={styles.dropzone} {...getRootProps()}>
                     <input {...getInputProps()} />
            
-                    { dropped ?
+                    { !dropped ?
                         isDragActive ?
                             <p>Drop the files here ...</p> :
                             <div className={styles.innerdropzone}>
@@ -137,7 +147,8 @@ export default function Revive() {
                         }
                     </div>
                     <div className={styles.buttonsection}>
-                        {   revampedImageUrl &&
+                        {   
+                            revampedImageUrl &&
                             <>
                                 <button onClick={newUpload}>Upload new photo</button>
                                 <button onClick={downloadImage}>Download revamped photo</button>
@@ -146,8 +157,13 @@ export default function Revive() {
                         {
                             originalImageUrl && !getRevampedcomplete &&
                             <>
+                                <p>fetching revived photo...</p>
                                 <Image className={styles.loading2} src={loading2} width='80' height='80' alt='loading...' />
                             </>
+                        }
+                        {
+                            errorMessage &&
+                            <p className={styles.error}>{errorMessage}</p>
                         }
                     </div>
                 </div>

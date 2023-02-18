@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const { success } = await ratelimit.limit(identifier)
 
     if (!success) {
-        res.status(429).json("Unable to process at this time, wait for 1 minute")
+        res.status(429).json({status: "failed", message: "Unable to process at this time, wait for 1 minute"})
         return
     }
 
@@ -67,6 +67,6 @@ export default async function handler(req, res) {
 
     }
 
-    res.status(200).json(revivedImage ? revivedImage : "Failed")
+    res.status(200).json(revivedImage ? {status:"success", url: revivedImage} : {status: "failed", message: "something went wrong"})
 
 }

@@ -90,6 +90,7 @@
 .loading2 {
   border-radius: 10px;
   mix-blend-mode: lighten;
+  position: absolute;
 }
 
 .revivepage {
@@ -157,12 +158,20 @@
 .buttonsection {
   display: flex;
   gap: 1em;
+  position: relative;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttonsection button:first-child{
   background: none;
   border: 2px solid white;
   color: white;
+}
+
+.error {
+  color: red;
+  font-size: 0.7rem;
 }
 
 /* responsive */
