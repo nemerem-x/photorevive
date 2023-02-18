@@ -7,6 +7,7 @@ import Image from 'next/image';
 import loading from '/public/load3.gif'
 import loading2 from '/public/load4.gif'
 import { saveAs } from 'file-saver'
+import { motion } from 'framer-motion';
 
 export default function Revive() {
 
@@ -83,6 +84,11 @@ export default function Revive() {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
     return (
+        <motion.div
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: 1, y: 15 }}
+        transition={{ duration: 0.5 }}
+        >
         <div className={styles.revivepage}>
             <p>Face restoration algorithm for old photos or AI-generated faces</p>
             <h1>Revive any face photo.</h1>
@@ -148,5 +154,6 @@ export default function Revive() {
             }
 
         </div>
+        </motion.div>
     )
 }

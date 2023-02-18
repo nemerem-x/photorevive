@@ -3,10 +3,16 @@ import Link from 'next/link'
 import styles from '@/styles/Home.module.css'
 import original from '../public/badImage.png'
 import revived from '../public/goodImage.png'
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
     <>
+      <motion.div
+      initial={{ opacity: 0, y: -15 }}
+      animate={{ opacity: 1, y: 15 }}
+      transition={{ duration: 0.5 }}
+      >
       <main className={styles.main}>
         <div className={styles.info}>
           <p>Face restoration algorithm for old photos or AI-generated faces</p>
@@ -28,6 +34,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      </motion.div>
     </>
   )
 }
