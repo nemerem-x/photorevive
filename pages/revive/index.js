@@ -96,8 +96,8 @@ export default function Revive() {
 
     return (
         <motion.div className={styles.motion}
-            initial={{ opacity: 0, y: -20, flex: 1, position: 'relative', height: 'auto', width: '100%' }}
-            animate={{ opacity: 1, y: 0, flex: 1, position: 'relative', height: 'auto', width: '100%' }}
+            initial={{ opacity: 0, y: -20, flex: 1, position: 'relative', height: 'auto', width: '100%', display: 'flex', alignItems: 'center' }}
+            animate={{ opacity: 1, y: 0, flex: 1, position: 'relative', height: 'auto', width: '100%', display: 'flex', alignItems: 'center' }}
             transition={{ duration: 0.3 }}
         >
             <div className={styles.revivepage}>
