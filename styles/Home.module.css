@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  align-items: center;
+  width: 100%;
 }
 
 .header {
@@ -14,6 +16,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 2;
+  width: 100%;
 }
 
 .header p {
@@ -32,6 +35,7 @@
   padding: 2em;
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .footer p {
@@ -99,6 +103,7 @@
   align-items: center;
   gap: 2em;
   flex: 1;
+  width: 100%;
 }
 
 .revivepage h1 {
@@ -131,8 +136,8 @@
 .loading {
   border-radius: 10px;
   mix-blend-mode: lighten;
-  height: 300px;
-  width: 300px;
+  /* height: 300px;
+  width: 300px; */
   position: absolute;
 }
 

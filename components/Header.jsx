@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <div className={styles.header}>
-        <Link href='/'><Image src={logo} width='200'/></Link>
+        <Link href='/'><Image src={logo} width='200' alt='logo'/></Link>
         <p>GFP-GAN</p>
     </div>
   )
