@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics, isSupported } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -13,5 +13,27 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig)
-// export const analytics = getAnalytics(app)
 export const storage = getStorage(app)
+// export const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null)
+
+// let app; let analytics; let storage;
+// if(typeof window != "undefined"){
+//   app = initializeApp(firebaseConfig);
+//   storage = getStorage(app);
+//   analytics = isSupported().then(yes => yes ? getAnalytics(app) : null);
+// }
+// export {app, analytics, storage}
+
+
+// let analytics; let storage;
+// if (firebaseConfig?.projectId) {
+//   // Initialize Firebase
+//   const app = initializeApp(firebaseConfig);
+
+//   if (app.name && typeof window !== 'undefined') {
+//     analytics = getAnalytics(app);
+//   }
+//   storage = getStorage(app);
+// }
+
+// export {analytics, storage};
