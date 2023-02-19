@@ -159,7 +159,7 @@ export default function Revive() {
                                     originalImageUrl && !getRevampedcomplete &&
                                     <>
                                         <p>fetching revived photo...</p>
-                                        <Image className={styles.loading2} src={loading2} width='80' height='80' alt='loading...' />
+                                        <Image className={styles.loading2} src={loading3} width='80' height='80' alt='loading...' />
                                     </>
                                 }
                                 {
