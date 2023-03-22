@@ -114,7 +114,7 @@ export default function Revive() {
                                     <p>Drop the files here ...</p> :
                                     <div className={styles.innerdropzone}>
                                         <button>Upload photo</button>
-                                        <p> ...or Drag and drop an photo</p>
+                                        <p> ...or Drag and Drop a photo</p>
                                     </div>
                                 :
                                 <>
